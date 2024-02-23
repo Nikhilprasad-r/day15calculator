@@ -166,6 +166,7 @@ function handleButtonPress(btnId) {
     C: "clear",
     Backspace: "clear",
     Delete: "clear",
+   Shift:"",
   };
 let allowedKeys = Object.keys(keyMappings);
 
