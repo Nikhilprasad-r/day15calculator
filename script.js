@@ -144,17 +144,7 @@ function handleButtonPress(btnId) {
   }
 }
 
-function handleKeyPress(event) {
-  console.log(event);
-  const key = event.key;
-  const buttonId = getKeyMappedButtonId(key);
-  if (buttonId) {
-    handleButtonPress(buttonId);
-  }
-}
-
-function getKeyMappedButtonId(key) {
-  const keyMappings = {
+ const keyMappings = {
     0: "0",
     1: "1",
     2: "2",
@@ -177,6 +167,23 @@ function getKeyMappedButtonId(key) {
     Backspace: "clear",
     Delete: "clear",
   };
+let allowedKeys = Object.keys(keyMappings);
+
+function handleKeyPress(event) {
+ 
+  const key = event.key;
+  if (allowedKeys.includes(key)) {
+    const buttonId = getKeyMappedButtonId(key);
+    if (buttonId) {
+      handleButtonPress(buttonId);
+    }
+  } else {
+    alert("only numbers are allowed");
+  }
+}
+
+function getKeyMappedButtonId(key) {
+ 
   return keyMappings[key];
 }
 
